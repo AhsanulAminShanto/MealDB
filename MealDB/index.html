@@ -10,6 +10,7 @@
   <header>
     <h1>Meal Search</h1>
   </header>
+
   <main>
     <div class="search-container">
       <input type="text" id="searchInput" placeholder="Search for a meal...">
@@ -21,8 +22,76 @@
 
     <button id="showAllButton" class="show-all-button">SHOW ALL</button>
   </main>
+
   <footer>
-    <p>&copy; 2024 @Shanto:Meal Search WebApp</p>
+    <p>&copy;  2024 @Shanto:Meal Search WebApp</p>
   </footer>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    const resultsContainer = document.getElementById('resultsContainer');
+    const showAllButton = document.getElementById('showAllButton');
+    let searchTerm = '';
+    let allMeals = [];
+
+    searchButton.addEventListener('click', () => {
+      searchTerm = searchInput.value.trim();
+      if (searchTerm !== '') {
+        searchMeal(searchTerm);
+      }
+    });
+
+    async function searchMeal(term) {
+      const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`;
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        allMeals = data.meals || [];
+        displayResults(allMeals.slice(0, 5));
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    function displayResults(meals) {
+      resultsContainer.innerHTML = '';
+      meals.forEach(meal => {
+        const mealElement = createMealElement(meal);
+        resultsContainer.appendChild(mealElement);
+      });
+      if (allMeals.length > 5) {
+        showAllButton.style.display = 'block';
+      } else {
+        showAllButton.style.display = 'none';
+      }
+    }
+
+    function createMealElement(meal) {
+      const mealElement = document.createElement('div');
+      mealElement.classList.add('meal');
+      mealElement.innerHTML = `
+        <div class="meal-info">
+          <h2>${meal.strMeal}</h2>
+          <p>ID: ${meal.idMeal}</p>
+          <p>Name: ${meal.strMeal}</p>
+          <p>Category: ${meal.strCategory}</p>
+          <p>Tags: ${meal.strTags}</p>
+          <p>Area: ${meal.strArea}</p>
+          <p>Instructions: ${meal.strInstructions}</p>
+          <p>Source: ${meal.strSource}</p>
+          <p>Watch Video: ${meal.strYoutube}</p>
+        </div>
+        <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+      `;
+      return mealElement;
+    }
+
+    showAllButton.addEventListener('click', () => {
+      displayResults(allMeals);
+      showAllButton.style.display = 'none'; 
+    });
+  </script>
 </body>
 </html>
+
