@@ -74,6 +74,18 @@ body {
     overflow: hidden;
     transition: transform 0.3s ease;
   }
+.meal-not-found {
+    text-align: center;
+    font-size: 18px;
+    color: #721c24; /* Red color */
+    background-color: #f8d7da; /* Light red background */
+    padding: 10px;
+    border: 1px solid #f5c6cb; /* Darker red border */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 20px;
+    font-weight: bold; /* Make the text bold */
+  }
+  
   
   img {
     max-width: 100%;
