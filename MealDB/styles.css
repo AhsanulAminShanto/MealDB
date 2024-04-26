@@ -3,15 +3,29 @@ body {
     margin: 0;
     padding: 0;
   }
-  header, footer {
+  
+  /* Header styling */
+  header {
     background-color: #333;
     color: #fff;
     padding: 20px;
     text-align: center;
   }
+   footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  
+  /* Main content area styling */
   main {
     padding: 20px;
   }
+  
+  /* Search container styling */
   .search-container {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -39,17 +53,19 @@ body {
   button:hover {
     background-color: #44505c;
   }
+  
+  /* Results container styling #0056b3;*/
   .results-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Four columns layout by default */
     gap: 20px;
     padding: 10px;
-    margin-top: 40px;
+    margin-top: 40px;;
   }
   
   .meal {
     background-color: #f9f9f9;
-    border: 1px solid #ccc;
+    border: 1px solid #6b96e6;
     border-radius: 5px;
     overflow: hidden;
     transition: transform 0.3s ease;
@@ -94,27 +110,34 @@ body {
   .show-all-button:hover {
     background-color: #44505c;
   }
+  
+  /* Media queries */
   @media only screen and (max-width: 600px) {
+    /* Single column layout for phones */
     .results-container {
       grid-template-columns: repeat(1, 1fr);
     }
   }
   
   @media only screen and (min-width: 601px) and (max-width: 900px) {
+    /* Two columns layout for tablets */
     .results-container {
       grid-template-columns: repeat(2, 1fr);
     }
   }
   
   @media only screen and (min-width: 901px) and (max-width: 1200px) {
+    /* Four columns layout for laptops */
     .results-container {
       grid-template-columns: repeat(4, 1fr);
     }
   }
   
   @media only screen and (min-width: 1201px) {
+    /* Five columns layout for extra-large devices */
     .results-container {
       grid-template-columns: repeat(5, 1fr);
     }
   }
+  
   
