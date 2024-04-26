@@ -54,16 +54,21 @@
       }
     }
 
-    function displayResults(meals) {
+   function displayResults(meals) {
       resultsContainer.innerHTML = '';
-      meals.forEach(meal => {
-        const mealElement = createMealElement(meal);
-        resultsContainer.appendChild(mealElement);
-      });
-      if (allMeals.length > 5) {
-        showAllButton.style.display = 'block';
-      } else {
+      if (meals.length === 0) {
+        resultsContainer.innerHTML = '<p class="meal-not-found">Meal not found</p>';
         showAllButton.style.display = 'none';
+      } else {
+        meals.forEach(meal => {
+          const mealElement = createMealElement(meal);
+          resultsContainer.appendChild(mealElement);
+        });
+        if (allMeals.length > 5) {
+          showAllButton.style.display = 'block';
+        } else {
+          showAllButton.style.display = 'none';
+        }
       }
     }
 
