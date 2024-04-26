@@ -78,11 +78,13 @@
           <p>Category: ${meal.strCategory}</p>
           <p>Tags: ${meal.strTags}</p>
           <p>Area: ${meal.strArea}</p>
+        </div>
+          <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+          <div class="meal-info">
           <p>Instructions: ${meal.strInstructions}</p>
           <p>Source: ${meal.strSource}</p>
           <p>Watch Video: ${meal.strYoutube}</p>
         </div>
-        <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
       `;
       return mealElement;
     }
@@ -94,4 +96,3 @@
   </script>
 </body>
 </html>
-
